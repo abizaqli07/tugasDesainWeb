@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jam digital</title>
+    <style>
+        .timedate{
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="timedate">
+        <h1 id="jam"></h1>
+        <br>
+        <button id="start">Start/Stop</button>
+    </div>
+
+    <script src="jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+
+        
+        let month = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","October","November","Desember"];
+        let day = ["minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+        
+        function updateTime(){
+            var date = new Date()
+            hari = day[date.getDay()];
+            tanggal = date.getDate();
+            bulan = month[date.getMonth()];
+            tahun = date.getFullYear().toString();
+            jam = date.getHours() < 10 ? "0" + String(date.getHours()) : date.getHours();
+            menit = date.getMinutes() < 10 ? "0" + String(date.getMinutes()) : date.getMinutes();
+            detik = date.getSeconds() < 10 ? "0" + String(date.getSeconds()) : date.getSeconds();
+
+            formattedDate = hari + ', ' + tanggal + ' ' + bulan + ' ' + tahun + "<br>" + jam + ':' + menit + ':' + detik;
+
+            $('#jam').html(formattedDate);
+        }
+        
+        setTimeout(updateTime(), 1000);
+
+        $('#start').click(function(){
+            $('#jam').toggle();
+        });
+
+    </script>
+</body>
+</html>

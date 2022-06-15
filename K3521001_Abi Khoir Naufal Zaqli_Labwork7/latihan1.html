@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana</title>
+    <style>
+        .kalkulator{
+            display: inline-block;
+            position: relative;
+            left: 35%;
+            top: 6rem;
+            background-color: grey;
+            padding: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="kalkulator">
+        <h1>Kalkulator sederhana</h1>
+        <form name="kalkulatorSederhana" action="#">
+            <p>bilangan 1 <input type="text" name="x" /></p>
+            <p>bilangan 2 <input type="text" name="y" /></p>
+            <p>hasil      <input type="text" name="hasil" disabled="true" /></p>
+            <p>operator <select name="opt"></p>
+                <option value="penjumlahan"> + | Tambah</option>
+                <option value="pengurangan"> - | Kurang</option>
+                <option value="perkalian"> * | Kali</option>
+                <option value="pembagian"> / | Bagi</option>
+            </select>
+            <input type="button" value="=" onClick="hitung()" />
+            <input type="button" value="CLEAR" onClick="resetForm()" />
+        </form>
+    </div>
+    
+    <script>
+        function hitung() {
+            var kalkulator = document.kalkulatorSederhana;
+            var x = eval(kalkulator.x.value);
+            var y = eval(kalkulator.y.value);
+            var operator = kalkulator.opt.value;
+            if (operator == "penjumlahan") {
+                var z = x + y;
+            } else if (operator == "pengurangan") {
+                var z = x - y;
+            } else if (operator == "perkalian") {
+                var z = x * y;
+            } else if (operator == "pembagian") {
+                var z = x / y;
+                }
+            kalkulator.hasil.value = z;
+        }
+        function resetForm() {
+            document.kalkulatorSederhana.reset();
+        }
+    </script>
+</body>
+
+</html>
